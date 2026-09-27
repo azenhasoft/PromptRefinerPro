@@ -36,6 +36,12 @@ Crie um arquivo `.env` na pasta do projeto:
 OPENAI_API_KEY=sua-chave
 ```
 
+O modelo padrão fica definido no código, mas também pode ser alterado pelo `.env` sem editar o programa:
+
+```text
+OPENAI_MODEL=nome-do-modelo
+```
+
 Depois execute:
 
 ```bash
@@ -53,18 +59,20 @@ O Gradio abrirá a interface da aplicação no navegador.
 
 ## Como está hoje
 
-A aplicação ainda é simples. O modelo está definido diretamente no código e os três estilos também usam instruções fixas.
+A aplicação ainda é simples, mas já valida prompt vazio, verifica a configuração da chave e trata erros da chamada à API sem derrubar a interface.
+
+Os três estilos usam instruções próprias e ficam separados da lógica principal em um dicionário. O modelo pode ser alterado pela variável `OPENAI_MODEL`, embora ainda não exista um seletor na interface.
 
 A versão atual usa a API da OpenAI. Embora eu tenha pensado em experimentar outros provedores, como OpenRouter, isso ainda não está implementado neste código.
 
-Também ainda não há histórico de prompts, comparação entre versões, testes automatizados ou configuração do modelo pela interface.
+Também ainda não há histórico de prompts, comparação entre versões ou testes automatizados.
 
 ## O que quero melhorar
 
-- [ ] validar quando o prompt estiver vazio
-- [ ] tratar erros da API de forma mais amigável
+- [x] validar quando o prompt estiver vazio
+- [x] tratar erros da API de forma mais amigável
 - [ ] permitir escolher o modelo pela interface
-- [ ] separar as instruções de refinamento do restante do código
+- [x] separar as instruções de refinamento do restante do código
 - [ ] criar novos estilos de refinamento
 - [ ] permitir comparar o prompt original com o refinado
 - [ ] criar testes para a lógica que não depende da API
